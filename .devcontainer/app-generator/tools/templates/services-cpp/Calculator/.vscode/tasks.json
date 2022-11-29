@@ -1,0 +1,75 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build service",
+            "type": "shell",
+            "command": "mkdir -p build && cd build && cmake `psidk-cmake-args` .. && make -j $(nproc)",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "statusbar": {
+                    "label": "$(tools) Build __service__"
+                }
+            }
+        },
+        {
+            "label": "Test service",
+            "type": "shell",
+            "command": "cd build && ./psitest __service__Service-test-debug.wasm -s -r compact",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "options": {
+                "statusbar": {
+                    "hide":true,
+                    "label": "$(beaker) Test __service__"
+                }
+            }
+        },
+        {
+            "label": "Stop psinode",
+            "type": "shell",
+            "command": "psinode-stop",
+            "options": {
+                "statusbar": {
+                    "hide":true,
+                    "label": "$(close)"
+                }
+            }
+        },
+        {
+            "label": "Start psinode",
+            "type": "shell",
+            "command": "psinode-start",
+            "options": {
+                "statusbar": {
+                    "hide":true,
+                    "label": "$(debug-start)"
+                }
+            }
+        },
+        {
+            "label": "Clean-start psinode",
+            "type": "shell",
+            "command": "psinode-clean-boot",
+            "options": {
+                "statusbar": {
+                    "hide":true,
+                    "label": "$(debug-restart)"
+                }
+            }
+        },
+    ],
+    "inputs": [
+        {
+            "id": "testsuite",
+            "type": "promptString",
+            "default": "[mytestsuite]",
+            "description": "Enter test suite key (Example: \"[MyTestSuite]\""
+        }
+    ]
+}

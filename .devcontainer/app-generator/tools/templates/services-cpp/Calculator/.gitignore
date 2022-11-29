@@ -1,0 +1,17 @@
+.ccache
+.DS_Store
+.nyc_output
+.trunk
+*.a
+*.log
+*.o
+*.tsbuildinfo
+*.wasm
+*.wat
+build
+build-*
+CMakeCache.txt
+CMakeFiles
+compile_commands.json
+Makefile
+node_modules

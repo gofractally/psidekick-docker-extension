@@ -1,0 +1,4 @@
+#!/bin/bash
+
+yarn --cwd /root/app-generator install
+yarn --cwd /root/app-generator run generate-applet-react

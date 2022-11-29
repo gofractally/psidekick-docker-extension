@@ -1,0 +1,29 @@
+{
+    "name": "${localWorkspaceFolderBasename}",
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "args": {
+            "GITHUB_ACCOUNT": "gofractally",
+            "REPOSITORY_NAME": "psibase-services"
+        }
+    },
+    "mounts": ["type=bind,src=${localWorkspaceFolder}/artifacts,dst=/root/projects/artifacts"],
+    "postStartCommand": "/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf",
+    "workspaceMount": "source=${localWorkspaceFolderBasename},target=/root/,type=volume",
+    "workspaceFolder": "/root/projects",
+    "runArgs": ["--name=${localWorkspaceFolderBasename}"],
+    "remoteEnv": { "ARTIFACTS": "/root/projects/artifacts" },
+    "extensions": [
+        "actboy168.tasks",
+        "bierner.markdown-mermaid",
+        "eamodio.gitlens",
+        "ms-vscode.cpptools",
+        "ms-vsliveshare.vsliveshare-pack",
+        "ritwickdey.LiveServer",
+        "rioj7.command-variable",
+        "tdennis4496.cmantic",
+        "twxs.cmake",
+        "xaver.clang-format",
+        "ziyasal.vscode-open-in-github"
+    ]
+}

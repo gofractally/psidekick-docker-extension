@@ -1,0 +1,13 @@
+{
+  "name": "generator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "generate-service-cpp": "node ./tools/generate-service-cpp.js",
+    "generate-applet-react": "node ./tools/generate-applet-react.js"
+  },
+  "devDependencies": {
+    "generate-template-files": "^3.2.1"
+  }
+}
