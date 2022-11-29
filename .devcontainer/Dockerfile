@@ -76,23 +76,3 @@ fi\n\
 alias ll="ls -alF"\n\
 alias ls="ls --color=auto"\n\
 ' >> /root/.bashrc
-
-
-
-#######################################
-
-# Args come from the devcontainer.json
-#ARG GITHUB_ACCOUNT
-#ARG REPOSITORY_NAME
-
-# Clone the specified github repo
-#WORKDIR /root
-#RUN mkdir ${PROJROOT}
-#WORKDIR /root/${PROJROOT}
-#RUN git clone https://github.com/${GITHUB_ACCOUNT}/${REPOSITORY_NAME}.git .
-
-# Make the build folder
-#RUN mkdir build
-#WORKDIR /root/${PROJROOT}/build
-#RUN cmake `clsdk-cmake-args` ..
-#RUN make -j $(nproc)

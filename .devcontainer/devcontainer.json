@@ -1,18 +1,13 @@
 {
     "name": "${localWorkspaceFolderBasename}",
-    "build": {
-        "dockerfile": "./Dockerfile",
-        "args": {
-            "GITHUB_ACCOUNT": "gofractally",
-            "REPOSITORY_NAME": "psibase-services"
-        }
-    },
-    "mounts": ["type=bind,src=${localWorkspaceFolder}/artifacts,dst=/root/projects/artifacts"],
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "psibase-services",
+
+    // Not sure
     "postStartCommand": "/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf",
-    "workspaceMount": "source=${localWorkspaceFolderBasename},target=/root/,type=volume",
+
+    // Keep
     "workspaceFolder": "/root/projects",
-    "runArgs": ["--name=${localWorkspaceFolderBasename}"],
-    "remoteEnv": { "ARTIFACTS": "/root/projects/artifacts" },
     "extensions": [
         "actboy168.tasks",
         "bierner.markdown-mermaid",
