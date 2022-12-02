@@ -1,12 +1,7 @@
 {
     "name": "${localWorkspaceFolderBasename}",
-    "dockerComposeFile": "docker-compose.yml",
-    "service": "psibase-services",
-
-    // Not sure
-    "postStartCommand": "/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf",
-
-    // Keep
+    "dockerComposeFile": "services/docker-compose.yml",
+    "service": "code",
     "workspaceFolder": "/root/projects",
     "extensions": [
         "actboy168.tasks",
