@@ -1,5 +1,21 @@
 FROM ubuntu:20.04
 
+# Prettify terminal, git completion
+ENV SHELL /bin/bash
+SHELL ["/bin/bash", "-c"]
+RUN echo $'\n\
+parse_git_branch() {\n\
+  git branch 2> /dev/null | sed -e "/^[^*]/d" -e "s/* \\(.*\\)/ (\\1)/"\n\
+} \n\
+export PS1="\u@\h \W\[\\033[32m\\]\\$(parse_git_branch)\\[\\033[00m\\] $ "\n\
+if [ -f ~/.git-completion.bash ]; then\n\
+  . ~/.git-completion.bash\n\
+fi\n\
+ \n\
+alias ll="ls -alF"\n\
+alias ls="ls --color=auto"\n\
+' >> /root/.bashrc
+
 RUN mkdir -p \
     /root/deps \
     /root/projects
@@ -54,19 +70,3 @@ ADD app-generator /root/app-generator
 # Update path
 ENV PSIDK_PREFIX=/root/deps/psidk
 ENV PATH=$PSIDK_PREFIX/bin:$WASI_SDK_PREFIX/bin:/root/app-generator/scripts:$PATH
-
-# Prettify terminal, git completion
-ENV SHELL /bin/bash
-SHELL ["/bin/bash", "-c"]
-RUN echo $'\n\
-parse_git_branch() {\n\
-  git branch 2> /dev/null | sed -e "/^[^*]/d" -e "s/* \\(.*\\)/ (\\1)/"\n\
-} \n\
-export PS1="\u@\h \W\[\\033[32m\\]\\$(parse_git_branch)\\[\\033[00m\\] $ "\n\
-if [ -f ~/.git-completion.bash ]; then\n\
-  . ~/.git-completion.bash\n\
-fi\n\
- \n\
-alias ll="ls -alF"\n\
-alias ls="ls --color=auto"\n\
-' >> /root/.bashrc
