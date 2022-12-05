@@ -15,6 +15,7 @@
         "twxs.cmake",
         "xaver.clang-format",
         "ziyasal.vscode-open-in-github",
-        "statiolake.vscode-rustfmt"
+        "statiolake.vscode-rustfmt",
+        "rust-lang.rust-analyzer"
     ]
 }
