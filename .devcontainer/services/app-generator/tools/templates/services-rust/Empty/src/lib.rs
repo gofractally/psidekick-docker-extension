@@ -1,0 +1,4 @@
+#[psibase::service]
+mod service {
+
+}

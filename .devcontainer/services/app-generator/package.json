@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "generate-service-cpp": "node ./tools/generate-service-cpp.js",
+    "generate-service-rust": "node ./tools/generate-service-rust.js",
     "generate-applet-react": "node ./tools/generate-applet-react.js"
   },
   "devDependencies": {

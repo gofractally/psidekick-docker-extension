@@ -38,6 +38,7 @@ then
                 break
                 ;;
             "Rust")
+                # psi-generate-service-rust
                 printf "\nSorry, not yet supported.\n\n"
                 break
                 ;;

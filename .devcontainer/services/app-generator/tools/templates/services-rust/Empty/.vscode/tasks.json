@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build service",
+            "type": "shell",
+            "command": "mkdir -p ../artifacts/__service__ && cargo psibase build && cp target/wasm32-wasi/release/__service__.wasm ../artifacts/__service__/__service__.wasm",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "statusbar": {
+                    "label": "$(tools) Build __service__"
+                }
+            }
+        }
+    ]
+}
