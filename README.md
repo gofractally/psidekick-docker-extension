@@ -19,7 +19,7 @@ If you don't already have Docker Desktop installed, you should be automatically 
 
 Once inside the docker container, open the integrated terminal within VSCode (```Ctrl+Shift+` on Windows```) and run `psi-generate`. Follow the on-screen instructions to generate and open a new project.
 
-You may use the buttons at the bottom of the VSCode window to build & test your project (You can even customize these buttons and their functionality by modifying `.vscode/tasks.json`).
+You may use the buttons at the bottom of the VSCode window to build & test your project (You can even customize these buttons and their functionality by modifying `.vscode/tasks.json`). Note: Testing functionality is currently disabled.
 
 ![](/res/build_test.png)
 
