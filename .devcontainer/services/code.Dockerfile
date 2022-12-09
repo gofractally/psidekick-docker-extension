@@ -100,3 +100,6 @@ ENV PATH=$CARGO_HOME/bin:$PSIDK_PREFIX/bin:$WASI_SDK_PREFIX/bin:/root/app-genera
 
 # Add app generator
 ADD app-generator /root/app-generator
+
+# Set Psinode URL
+ENV PSINODE_URL=http://services-psinode-1:8080/
