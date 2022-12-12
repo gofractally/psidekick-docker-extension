@@ -45,6 +45,7 @@ ENV PATH=$PSIDK_PREFIX/bin:$WASI_SDK_PREFIX/bin:/root/app-generator/scripts:$PAT
 
 # Add app generator
 ADD app-generator /root/app-generator
+RUN chmod -R 0700 /root/app-generator
 
 # Set Psinode URL
 ENV PSINODE_URL=http://jamesmart_psidekick-desktop-extension-service:8080/
