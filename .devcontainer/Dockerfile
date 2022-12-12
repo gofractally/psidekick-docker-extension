@@ -1,6 +1,6 @@
-FROM ubuntu:20.04
+FROM ghcr.io/gofractally/psibase-ubuntu-2004-builder:latest
 
-# Prettify terminal, git completion
+# Use bash, prettify terminal, git completion
 ENV SHELL /bin/bash
 SHELL ["/bin/bash", "-c"]
 RUN echo $'\n\
@@ -18,40 +18,33 @@ alias ls="ls --color=auto"\n\
 
 RUN mkdir -p \
     /root/deps \
-    /root/psinode
+    /root/projects
 
 # Install deps
+# Not sure what this is for, or if it is needed:
+#WORKDIR /root
+#RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+#RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN export DEBIAN_FRONTEND=noninteractive   \
     && apt-get update                       \
     && apt-get install -yq                  \
-        curl                                \
+      # gnupg (might be covered by the base img) \
         wget                                \
+        xz-utils                            \
     && apt-get clean -yq                    \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /root/deps
-
 # Psidk
+WORKDIR /root/deps
 RUN wget https://github.com/gofractally/psibase/releases/download/rolling-release/psidk-linux.tar.gz \
     && tar xf psidk-linux.tar.gz         \
     && rm psidk-linux.tar.gz
 ENV PSIDK_PREFIX=/root/deps/psidk
-ENV PATH=$PSIDK_PREFIX/bin:$PATH
+ENV WASI_SDK_PREFIX=/opt/wasi-sdk-14.0
+ENV PATH=$PSIDK_PREFIX/bin:$WASI_SDK_PREFIX/bin:/root/app-generator/scripts:$PATH
 
-# Install deps
-RUN export DEBIAN_FRONTEND=noninteractive    \
-    && apt-get update                        \
-    && apt-get install -yq                   \
-        supervisor                           \
-    && apt-get clean -yq                     \
-    && rm -rf /var/lib/apt/lists/*
+# Add app generator
+ADD app-generator /root/app-generator
 
-# Configure supervisor with psinode
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY start-psinode-wait /root/psinode/start-psinode-wait
-
-# Add some tools
-ADD scripts /root/psinode/scripts
-ENV PATH=/root/psinode/scripts:$PATH
-
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# Set Psinode URL
+ENV PSINODE_URL=http://jamesmart_psidekick-desktop-extension-service:8080/

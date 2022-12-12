@@ -18,51 +18,17 @@
         {
             "label": "Test service",
             "type": "shell",
-            "command": "cd build && ./psitest __service__Service-test-debug.wasm -s -r compact",
+            "command": "cd build && psitest artifacts/test/__service__-test.wasm -s -r compact",
             "group": {
                 "kind": "test",
                 "isDefault": true
             },
             "options": {
                 "statusbar": {
-                    "hide":true,
                     "label": "$(beaker) Test __service__"
                 }
             }
-        },
-        {
-            "label": "Stop psinode",
-            "type": "shell",
-            "command": "psinode-stop",
-            "options": {
-                "statusbar": {
-                    "hide":true,
-                    "label": "$(close)"
-                }
-            }
-        },
-        {
-            "label": "Start psinode",
-            "type": "shell",
-            "command": "psinode-start",
-            "options": {
-                "statusbar": {
-                    "hide":true,
-                    "label": "$(debug-start)"
-                }
-            }
-        },
-        {
-            "label": "Clean-start psinode",
-            "type": "shell",
-            "command": "psinode-clean-boot",
-            "options": {
-                "statusbar": {
-                    "hide":true,
-                    "label": "$(debug-restart)"
-                }
-            }
-        },
+        }
     ],
     "inputs": [
         {

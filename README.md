@@ -6,7 +6,8 @@ This tool allows anyone to start developing new PsiBase web services (frontend a
 
 1. VSCode installed on your development PC
 2. Docker desktop is installed on your development PC
-3. [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) VSCode extension has been installed.
+3. [Psidekick extension](docker-desktop://extensions/marketplace?extensionId=jamesmart/psidekick&tag=0.1.3) installed in Docker Desktop
+4. [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) VSCode extension has been installed.
 
 # Instructions
 

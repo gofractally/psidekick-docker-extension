@@ -26,7 +26,7 @@ add_custom_command(TARGET __service__
 
 
 # Add unit tests
-# add_subdirectory(test)    # Todo: Not working yet
+add_subdirectory(test)
 
 # These symlinks help vscode
 execute_process(COMMAND ln -sfT ${psidk_DIR} ${CMAKE_CURRENT_BINARY_DIR}/psidk)

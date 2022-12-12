@@ -1,6 +1,6 @@
 {
     "name": "${localWorkspaceFolderBasename}",
-    "dockerComposeFile": "services/docker-compose.yml",
+    "dockerComposeFile": "./docker-compose.yml",
     "service": "code",
     "workspaceFolder": "/root/projects",
     "extensions": [
