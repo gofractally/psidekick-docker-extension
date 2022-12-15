@@ -1,0 +1,2 @@
+#!/bin/bash
+docker buildx inspect buildx-multi-arch || docker buildx create --name=buildx-multi-arch --driver=docker-container --driver-opt=network=host

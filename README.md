@@ -1,35 +1,34 @@
-# Overview
+# Psidekick
 
-This tool allows anyone to start developing new PsiBase web services (frontend and backend) in just a few clicks. When using this tool, you will connect VSCode to a preconfigured docker container, generate a project, and deploy your new project to a locally-running psinode instance.
+Psidekick is a tool that is used to aid in the development of web services and their corresponding graphical front-ends.
 
-# Prerequisites
+Developed services and front-ends are intended to be hosted on a [Psibase](https://about.psibase.io) deployment.
 
-1. VSCode installed on your development PC
-2. Docker desktop is installed on your development PC
-3. [Psidekick extension](docker-desktop://extensions/marketplace?extensionId=jamesmart/psidekick&tag=0.1.3) installed in Docker Desktop
-4. [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) VSCode extension has been installed.
+# Components
 
-# Instructions
+There are two components to Psidekick:
 
-1. Clone this repo onto your PC
-2. Open this repo in VSCode
-3. Run the `Remote-Containers: Rebuild and Reopen in Container` command in VSCode
-![](/res/rebuild_reopen.png)
+1. The Docker Desktop extension that runs a development version of Psinode, which is the client software that allows for storage and services of web services and front-ends.
+2. The Psidekick-dev tool, which allows developers to use VSCode to develop services inside a docker container.
 
-If you don't already have Docker Desktop installed, you should be automatically prompted to install it. VSCode will then relaunch, connecting to a new docker container with an environment pre-configured to be able to build Psibase Services. This can take a few minutes on the first time for it to build the docker container.
+# Docker Desktop extension
 
-Once inside the docker container, open the integrated terminal within VSCode (```Ctrl+Shift+` on Windows```) and run `psi-generate`. Follow the on-screen instructions to generate and open a new project.
+To use the Docker Desktop extension, you must be running the latest version of [Docker Desktop](https://www.docker.com/products/docker-desktop/). If you already have it installed, you can check if there are any available updates in Settings > Software Updates.
 
-You may use the buttons at the bottom of the VSCode window to build & test your project (You can even customize these buttons and their functionality by modifying `.vscode/tasks.json`). Note: Testing functionality is currently disabled.
+Once you're on the latest version, use [this link](docker-desktop://extensions/marketplace?extensionId=jamesmart/psidekick) to install the extension.
 
-![](/res/build_test.png)
+After the extension is installed, Psidekick will automatically start Psinode for you, and it will be exposed to your local machine on port 8080. Visit `http://psibase.127.0.0.1.sslip.io:8080/` in your web browser to browse the microservice front-ends hosted on your local psinode.
 
-When you're ready to deploy your project, follow the deployment instructions found [here](https://doc-sys.psibase.io/cpp-service/basic/index.html#deploying-the-service).
+# Services development
 
-*To-do: Use a graphical UI from the chain for deployment.*
+To develop your own web services, you should clone the [Psidekick repository](https://github.com/gofractally/psidekick) from the Fractally Github.
 
-# Additional notes
+Follow the instructions in the repo Readme.md to begin developing Rust or C++ services in a docker container.
 
-When VSCode closes, the container stops. The data within the container is not accessible, as it's stored in an unnamed volume mounted on your PC, only accessible through the docker container launched by VSCode.
+More documentation for service development is available [here](http://doc-sys.psibase.io).
 
-All changes made within the container will persist on your PC (as long as you don't delete the docker volume), and must be pushed to a git repository if you want to work on it on another PC.
+# Notes
+
+## Future
+
+Future additions to this tool may include a front-end within the Docker Desktop client that allows the user to stop/start/restart the Psinode process. It should also allow the user to perform a clean reboot of the Psinode process that wipes the database back to its genesis state.
