@@ -1,6 +1,6 @@
 services:
   psinode:
-    image: "jamesmart/psidekick-psinode"
+    image: "ghcr.io/gofractally/psinode-ubuntu-2004"
     user: root
     ports:
       - '8080:8080'

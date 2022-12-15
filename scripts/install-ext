@@ -1,4 +1,4 @@
 #!/bin/bash
 IMAGE=jamesmart/psidekick
-TAG=0.1.3
+TAG=0.1.4
 docker extension install $IMAGE:$TAG
